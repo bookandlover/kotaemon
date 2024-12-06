@@ -433,7 +433,7 @@ class FullQAPipeline(BaseReasoning):
             },
             "system_prompt": {
                 "name": "System Prompt",
-                "value": "This is a question answering system",
+                "value": "这是一个RAG问答和写作系统",
             },
             "qa_prompt": {
                 "name": "QA Prompt (contains {context}, {question}, {lang})",
@@ -470,9 +470,7 @@ class FullQAPipeline(BaseReasoning):
 
 
 class FullDecomposeQAPipeline(FullQAPipeline):
-    def answer_sub_questions(
-        self, messages: list, conv_id: str, history: list, **kwargs
-    ):
+    def answer_sub_questions(system_prompt: str, messages: list, conv_id: str, history: list, **kwargs):
         output_str = ""
         for idx, message in enumerate(messages):
             yield Document(
